@@ -1,4 +1,4 @@
-name: DevOps Assessment
+name: DevOps-Assessment
 
 on:
   push:
