@@ -15,8 +15,8 @@ jobs:
             - name: Build the Docker image
               run: |
  
-                docker build -t first-devops-docker/hafizshaikh
-                docker push first-devops-docker
+                docker build -t first-devops-docker/devops-assessment/Dockerfile
+                docker push first-devops-docker/devops-assessment/Dockerfile
  
  
                   git config user.name "$GITHUB_ACTOR"
