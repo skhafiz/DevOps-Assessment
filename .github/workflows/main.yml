@@ -4,7 +4,7 @@ on:
     # but only for the development branch
     push:
         branches:
-            - uat
+            - main
 
  
 jobs:
@@ -22,7 +22,7 @@ jobs:
                   git config user.name "$GITHUB_ACTOR"
                   git config user.email "$GITHUB_ACTOR@wohlig.com"
  
-                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/DevOps-Assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.apps/dev-rbi-backend.yaml
+                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/DevOps-Assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.apps/DevOps-Assessment.yaml
  
                   git add .
                   git commit -m "updating newer image"
