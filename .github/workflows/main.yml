@@ -1,4 +1,4 @@
-name: DevOps-Assessment
+name: devops-assessment
 on:
     # Trigger the workflow on push,
     # but only for the development branch
@@ -15,15 +15,15 @@ jobs:
             - name: Build the Docker image
               run: |
  
-                  docker build -t first-devops-docker/DevOps-Assessment:$GITHUB_REF_NAME-$GITHUB_SHA . 
-                  docker push first-devops-docker/DevOps-Assessment:$GITHUB_REF_NAME-$GITHUB_SHA
+                  docker build -t first-devops-docker/devops-assessment:$GITHUB_REF_NAME-$GITHUB_SHA . 
+                  docker push first-devops-docker/devops-assessment:$GITHUB_REF_NAME-$GITHUB_SHA
  
  
                   git config user.name "$GITHUB_ACTOR"
                   git config user.email "$GITHUB_ACTOR@wohlig.com"
  
-                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/DevOps-Assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.apps/DevOps-Assessment.yaml
+                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/devops-assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.apps/devops-assessment.yaml
  
                   git add .
                   git commit -m "updating newer image"
-                  git push --set-upstream origin uat
+                  git push --set-upstream origin main
