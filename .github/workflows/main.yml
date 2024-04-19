@@ -18,8 +18,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t hafizshaikh/newig
-          docker push hafizshaikh/newig
+          docker build -t hafizshaikh/newig/first-devops-assesment: latest .
+          docker push hafizshaikh/newig/first-devops-assesment: latest
 
 
           git config user.name "$GITHUB_ACTOR"
