@@ -1,27 +1,26 @@
-name: devops-assessment
-on:
-    # Trigger the workflow on push,
-    # but only for the development branch
-    push:
-        branches:
-            - main
+name: DevOps Assessment
 
- 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-    DevOps-Assessment:
-        runs-on: ubuntu-latest
- 
-        steps:
-            - name: Build the Docker image
-              run: |
- 
-                docker build -t first-devops-docker/devops-assessment/Dockerfile
-                docker push first-devops-docker/devops-assessment/Dockerfile
- 
- 
-                  git config user.name "$GITHUB_ACTOR"
-                  git config user.email "$GITHUB_ACTOR@wohlig.com"
- 
-                  git add .
-                  git commit -m "updating newer image"
-                  git push --set-upstream origin main
+  devops-assessment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: |
+          docker build -t first-devops-docker/DevOps-Assessment .
+          docker push first-devops-docker/DevOps-Assessment
+
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@wohlig.com"
+
+          git add .
+          git commit -m "updating newer image"
+          git push --set-upstream origin main
