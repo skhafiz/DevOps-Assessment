@@ -1,4 +1,4 @@
-name: Devops-Assessments
+name: Devops-Assessment
 
 on:
   push:
