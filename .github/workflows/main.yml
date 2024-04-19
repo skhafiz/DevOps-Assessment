@@ -15,14 +15,12 @@ jobs:
             - name: Build the Docker image
               run: |
  
-                  docker build -t first-devops-docker/devops-assessment:$GITHUB_REF_NAME-$GITHUB_SHA . 
-                  docker push first-devops-docker/devops-assessment:$GITHUB_REF_NAME-$GITHUB_SHA
+                  docker build -t first-devops-docker . 
+                  docker push first-devops-docker
  
  
                   git config user.name "$GITHUB_ACTOR"
                   git config user.email "$GITHUB_ACTOR@wohlig.com"
- 
-                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/devops-assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.apps/devops-assessment.yaml
  
                   git add .
                   git commit -m "updating newer image"
