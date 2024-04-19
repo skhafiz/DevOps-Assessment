@@ -1,4 +1,4 @@
-name: Devops-new-Assessments
+name: Devops-Assessments
 
 on:
   push:
@@ -18,8 +18,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t hafizshaikh/newimages/first-devops-assessment:latest .
-          docker push hafizshaikh/newimages/first-devops-assessment:latest 
+          docker build -t hafizshaikh/newimage/first-devops-assessment:latest .
+          docker push hafizshaikh/newimage/first-devops-assessment:latest 
 
 
           git config user.name "$GITHUB_ACTOR"
