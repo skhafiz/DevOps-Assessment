@@ -18,8 +18,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t hafizshaikh/newimg/first-devops-assessment:latest .
-          docker push hafizshaikh/newimg/first-devops-assessment:latest
+          docker build -t hafizshaikh/newimg/first-devops-assessment:$GITHUB_REF_NAME-$GITHUB_SHA .
+          docker push hafizshaikh/newimg/first-devops-assessment:$GITHUB_REF_NAME-$GITHUB_SHA .
 
 
           git config user.name "$GITHUB_ACTOR"
