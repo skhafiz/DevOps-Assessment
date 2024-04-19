@@ -1,30 +1,29 @@
-name: Update File
+name: DevOps-Assessment
 on:
     # Trigger the workflow on push,
     # but only for the development branch
     push:
         branches:
             - uat
- 
 
  
 jobs:
-   DevOps-Assessment:
+    DevOps-Assessment:
         runs-on: ubuntu-latest
  
-            - name: Build Docker Images
+        steps:
+            - name: Build the Docker image
               run: |
  
                   docker build -t first-devops-docker/DevOps-Assessment:$GITHUB_REF_NAME-$GITHUB_SHA . 
                   docker push first-devops-docker/DevOps-Assessment:$GITHUB_REF_NAME-$GITHUB_SHA
  
-                  git checkout develop
  
                   git config user.name "$GITHUB_ACTOR"
                   git config user.email "$GITHUB_ACTOR@wohlig.com"
  
-                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/DevOps-Assessment/-i deployment.apps/DevOps-Assessment.yaml
+                  yq e '.spec.template.spec.containers[0].image = "first-devops-docker/DevOps-Assessment:${{ env.GITHUB_BRANCH }}"' -i deployment.apps/dev-rbi-backend.yaml
  
                   git add .
                   git commit -m "updating newer image"
-                  git push --set-upstream origin develop
+                  git push --set-upstream origin uat
