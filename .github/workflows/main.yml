@@ -17,6 +17,7 @@ jobs:
           docker build -t hafizshaikh/newimage3:first-devops-assessment-latest . && \
           docker push hafizshaikh/newimage3:first-devops-assessment-latest
 
+
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@wohlig.com"
           git add .
