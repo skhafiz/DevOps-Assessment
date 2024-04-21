@@ -1,3 +1,5 @@
+name: Devops-Assessments
+
 on:
   push:
     branches:
